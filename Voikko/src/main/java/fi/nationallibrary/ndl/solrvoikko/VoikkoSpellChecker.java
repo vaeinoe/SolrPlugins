@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2012 The National Library of Finland
  *
  * This program is free software; you can redistribute it and/or
@@ -28,11 +28,12 @@ import org.apache.solr.core.SolrCore;
 import org.apache.solr.search.SolrIndexSearcher;
 import org.apache.solr.spelling.SolrSpellChecker;
 import org.apache.solr.spelling.SpellingResult;
+import org.apache.solr.spelling.SpellingOptions;
 
 /**
- * 
- * @author ere.maijala@helsinki.fi
  *
+ * @author ere.maijala@helsinki.fi
+ * @author vaeinoe@gmail.com
  */
 public class VoikkoSpellChecker extends SolrSpellChecker {
 
@@ -43,8 +44,7 @@ public class VoikkoSpellChecker extends SolrSpellChecker {
 	}
 
 	@Override
-	public SpellingResult getSuggestions(Collection<Token> arg0,
-			IndexReader arg1, int arg2, boolean arg3, boolean arg4)
+	public SpellingResult getSuggestions(SpellingOptions options)
 			throws IOException {
 		SpellingResult result = new SpellingResult();
 		// TODO

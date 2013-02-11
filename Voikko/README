@@ -1,4 +1,4 @@
-Fork of NDL Voikko Finnish stemming / spelling plugin for Solr 4.x compatibility.
+Fork of NDL-Alli Voikko Finnish stemming / spelling plugin updated for Solr 4.x compatibility.
 
 These instructions are for CentOS 6, but can be adapted to other OS's.
 
@@ -7,6 +7,7 @@ These instructions are for CentOS 6, but can be adapted to other OS's.
         cd /etc/yum.repos.d
         wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
         yum install malaga gcc gcc-c++ apache-maven
+
 Log out and back in for changes to take effect.
 
 2. Install Voikko
@@ -38,14 +39,14 @@ Log out and back in for changes to take effect.
       mvn compile
       mvn package
 
-6. Copy the following jar files to solr/lib
+6. Copy the following jar files to solr/lib and make sure they get included in Solr config:
   * libvoikko.jar (created in step 4, found in target directory)
-  * solrvoikko-x.y.z-SNAPSHOT.jar (created in step 5, found in target directory)
+  * solrvoikko-x.y.z-solr4-SNAPSHOT (created in step 5, found in target directory)
   * jna.jar (download from https://github.com/twall/jna)
 
 7. Start using the plugin with the following filter declaration in Solr schema configuration
 
-        <filter class="fi.nationallibrary.ndl.solrvoikko.VoikkoBaseformFilterFactory" expandCompounds="true"/>
+        <filter class="fi.nationallibrary.ndl.solrvoikko.VoikkoFilterFactory" expandCompounds="true"/>
 
 Note that the package includes a small test app that can be used to display results of Voikko analysis. The test app can be run with the command
 

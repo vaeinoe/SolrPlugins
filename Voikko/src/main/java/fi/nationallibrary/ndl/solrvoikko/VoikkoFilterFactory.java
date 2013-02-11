@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2012 The National Library of Finland
  *
  * This program is free software; you can redistribute it and/or
@@ -21,19 +21,19 @@ package fi.nationallibrary.ndl.solrvoikko;
 
 import java.util.Map;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.solr.analysis.BaseTokenFilterFactory;
+import org.apache.lucene.analysis.util.TokenFilterFactory;
 import org.puimula.libvoikko.Voikko;
 
 /**
- * 
- * @author ere.maijala@helsinki.fi
  *
+ * @author ere.maijala@helsinki.fi
+ * @author vaeinoe@gmail.com
  */
-public class VoikkoFilterFactory extends BaseTokenFilterFactory {
+public class VoikkoFilterFactory extends TokenFilterFactory {
 
   private boolean expandCompounds = false;
   private boolean separateTokens = true; // Whether to create separate tokens (useful for indexing) or a string of tokens (useful for search)
-  private boolean allAnalysis = false; // Whether to use all analysis possibilities 
+  private boolean allAnalysis = false; // Whether to use all analysis possibilities
   private int minWordSize;
   private int minSubwordSize;
   private int maxSubwordSize;
@@ -54,10 +54,10 @@ public class VoikkoFilterFactory extends BaseTokenFilterFactory {
   public TokenStream create(TokenStream input) {
     return new VoikkoFilter(input, voikko, expandCompounds, minWordSize, minSubwordSize, maxSubwordSize, separateTokens, allAnalysis);
   }
-  
+
   @Override
   protected void finalize() throws Throwable {
 	  voikko.terminate();
   }
-  
+
 }

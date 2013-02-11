@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2012 The National Library of Finland
  *
  * This program is free software; you can redistribute it and/or
@@ -22,17 +22,17 @@ package fi.nationallibrary.ndl.solrvoikko;
 import java.io.Reader;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.Analyzer.TokenStreamComponents;
 
 /**
- * 
- * @author ere.maijala@helsinki.fi
  *
+ * @author ere.maijala@helsinki.fi
+ * @author vaeinoe@gmail.com
  */
 public class VoikkoAnalyzer extends Analyzer {
 
 	@Override
-	public TokenStream tokenStream(String arg0, Reader arg1) {
+	public TokenStreamComponents createComponents(String arg0, Reader arg1) {
 		// TODO Auto-generated method stub
 		return null;
 	}
